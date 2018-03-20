@@ -1,0 +1,44 @@
+{% extends "base_admin.html" %}
+{% block applications %}
+    class="active"
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header" data-background-color={{ color }}>
+                    <h4 class="title">{{ title }}</h4>
+                    <p class="category">Applicants are not shown in any particular order.</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text">
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Year</th>
+                            <th>EGD</th>
+                            <th>Campus</th>
+                            <th>Interest</th>
+                            <th>Resume</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody>
+                            {% for applicant in applicants %}
+                                <tr>
+                                    <td><a href='/admin/applications/applicant/{{ applicant.user_id }}'>{{ applicant.first_name }} {{ applicant.last_name }}</a></td>
+                                    <td>{{ applicant.position }}</td>
+                                    <td>{{ applicant.year }}</td>
+                                    <td>{{ applicant.expected_graduation_date }}</td>
+                                    <td>{{ applicant.on_campus }}</td>
+                                    <td>{{ applicant.why_interested }}</td>
+                                    <td>{{ applicant.resume_link }}</td>
+                                    <td>{{ applicant.status }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

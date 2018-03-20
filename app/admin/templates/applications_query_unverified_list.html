@@ -1,0 +1,36 @@
+{% extends "base_admin.html" %}
+{% block applications %}
+    class="active"
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header" data-background-color={{ color }}>
+                    <h4 class="title">{{ title }}</h4>
+                    <p class="category">Applicants are not shown in any particular order.</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text">
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Position</th>
+                        </thead>
+                        <tbody>
+                            {% for user in unverified_users %}
+                                <tr>
+                                    <td>{{ user.first_name }}</td>
+                                    <td>{{ user.last_name }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.position }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
