@@ -18,14 +18,13 @@ def logout():
 @admin.route('/dashboard', methods=['GET'])
 @login_required
 def dashboard():
-    applications = mongo.Applicant.objects(
-        semester=environment.current_semester()).count()
-    total_applications = mongo.Applicant.objects.count()
-    unverified_users = mongo.UnverifiedUserId.objects.count()
-    return render_template('dashboard.html',
-                           applications=applications,
-                           total_applications=total_applications,
-                           unverified_users=unverified_users)
+    kwargs = {
+        'current_applications': mongo.Applicant.objects(
+            semester=environment.current_semester()).count(),
+        'total_applications': mongo.Applicant.objects.count(),
+        'all_unverified': mongo.UnverifiedUserId.objects.count(),
+    }.update(query.get_kwargs())
+    return render_template('dashboard.html', **kwargs)
 
 
 @admin.route('/control_panel', methods=['GET'])
@@ -37,13 +36,7 @@ def control_panel():
 @admin.route('/applications', methods=['GET'])
 @login_required
 def applications():
-    return render_template('applications.html',
-                           query_current_all=query.current_all,
-                           query_current_remaining=query.current_remaining,
-                           query_current_rejected=query.current_rejected,
-                           query_current_accepted=query.current_accepted,
-                           query_current_special=query.current_special,
-                           query_current_unverified=query.all_unverified)
+    return render_template('applications.html', **query.get_kwargs())
 
 
 @admin.route('/applications/<string:urlquery>', methods=['GET'])

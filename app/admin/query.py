@@ -87,3 +87,14 @@ current_special = urllib.parse.quote(json.dumps(
             }
         }
     }))
+
+
+def get_kwargs():
+    return {
+        'query_current_all': current_all,
+        'query_current_remaining': current_remaining,
+        'query_current_rejected': current_rejected,
+        'query_current_accepted': current_accepted,
+        'query_current_special': current_special,
+        'query_current_unverified': all_unverified,
+    }
