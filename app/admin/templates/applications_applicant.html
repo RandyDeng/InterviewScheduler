@@ -47,15 +47,21 @@
                             </tr>
                             <tr>
                                 <td>Why are you interested in this position?</td>
-                                <td>{{ applicant.why_interested }}</td>
+                                {% autoescape false %}
+                                <td>{{ applicant.why_interested | replace("\n", "<br>") }}</td>
+                                {% endautoescape %}
                             </tr>
                             <tr>
                                 <td>List 3-5 skills that are relevant to the position</td>
-                                <td>{{ applicant.skills }}</td>
+                                {% autoescape false %}
+                                <td>{{ applicant.skills | replace("\n", "<br>") }}</td>
+                                {% endautoescape %}
                             </tr>
                             <tr>
                                 <td>Additional Comments</td>
-                                <td>{{ applicant.comments }}</td>
+                                {% autoescape false %}
+                                <td>{{ applicant.comments | replace("\n", "<br>") }}</td>
+                                {% endautoescape %}
                             </tr>
                             <tr>
                                 <td>Application Status</td>
