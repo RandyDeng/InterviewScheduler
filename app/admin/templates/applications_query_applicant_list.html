@@ -27,7 +27,7 @@
                                     <td><a href='/admin/applications/applicant/{{ applicant.user_id }}'>{{ applicant.first_name }} {{ applicant.last_name }}</a></td>
                                     <td>{{ applicant.position }}</td>
                                     <td>{{ applicant.year }}</td>
-                                    <td>{{ applicant.expected_graduation_date }}</td>
+                                    <td>{{ applicant.expected_graduation_date.strftime('%Y-%m-%d') }}</td>
                                     <td>{{ applicant.on_campus }}</td>
                                     <td>{{ applicant.resume_link }}</td>
                                     <td>{{ applicant.status }}</td>
