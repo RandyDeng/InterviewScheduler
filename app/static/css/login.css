@@ -112,6 +112,7 @@ body {
   color: black;
   margin-bottom: 1em;
   float: left;
+  font-weight: normal;
 }
 .form-module .cta {
   background: #f2f2f2;
