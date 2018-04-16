@@ -63,7 +63,8 @@ class OfficerRegistrationForm(FlaskForm):
     position = StringField(render_kw={"disabled": True})
     phone_number = StringField('Phone Number:', validators=[
                                 InputRequired(),
-                                Length(min=1, max=50)])
+                                Length(min=1, max=50)],
+                               render_kw={"Phone Number"})
     year = SelectField('Select your year:', choices=[
                         ('1st', '1st Year'),
                         ('2nd', '2nd Year'),
@@ -100,7 +101,8 @@ class PIRegistrationForm(FlaskForm):
     position = StringField(render_kw={"disabled": True})
     phone_number = StringField('Phone Number:', validators=[
                                 InputRequired(),
-                                Length(min=1, max=50)])
+                                Length(min=1, max=50)],
+                               render_kw={"Phone Number"})
     year = SelectField('Select your year:', choices=[
                         ('1st', '1st Year'),
                         ('2nd', '2nd Year'),
