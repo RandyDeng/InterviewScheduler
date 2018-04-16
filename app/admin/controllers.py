@@ -23,7 +23,8 @@ def dashboard():
             semester=environment.current_semester()).count(),
         'total_applications': mongo.Applicant.objects.count(),
         'all_unverified': mongo.UnverifiedUserId.objects.count(),
-    }.update(query.get_kwargs())
+    }
+    kwargs.update(query.get_kwargs())
     return render_template('dashboard.html', **kwargs)
 
 
