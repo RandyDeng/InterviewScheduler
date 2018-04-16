@@ -33,8 +33,8 @@ def admin():
                 user = admin_login_manager.User(form.username.data)
                 login_user(user)
                 return redirect('admin')
-        flash("Invalid username and password", 'alert alert-danger')
-    return render_template("admin.html", form=form)
+        flash('Invalid username and password', 'alert alert-danger')
+    return render_template('admin.html', form=form)
 
 
 @login.route('/user', methods=['GET', 'POST'])
@@ -57,9 +57,10 @@ def user():
                         unverified_user.user_id)
                 }
             )
-            flash("Registration sent!", 'alert alert-success')
+            flash('Registration sent!', 'alert alert-success')
             return redirect('/login/email_verification')
-        flash("Please enter valid credentials", 'alert alert-danger')
+        flash('Please enter a valid name and Georgia Tech email',
+              'alert alert-danger')
     return render_template('user.html', form=form)
 
 
@@ -89,7 +90,7 @@ def pi_registration(id):
                 phone_number=form.phone_number.data,
                 year=form.year.data,
                 expected_graduation_date=form.expected_graduation_date.data,
-                on_campus=", ".join(form.on_campus.data),
+                on_campus=', '.join(form.on_campus.data),
                 why_interested=form.why_interested.data,
                 comments=form.comments.data,
                 resume_link=form.resume_link.data  # TODO add actual resume
@@ -97,7 +98,8 @@ def pi_registration(id):
             new_app.save()
             unverified_id.delete()
             return redirect('/user/' + id)
-        flash("Please enter valid credentials", 'alert alert-danger')
+        flash('Please enter valid responses. Text responses are limited to '
+              '10,000 characters.', 'alert alert-danger')
     return render_template('pi_registration.html', user_id=id, form=form,
                            user=unverified_id)
 
@@ -124,7 +126,7 @@ def officer_registration(id):
                 phone_number=form.phone_number.data,
                 year=form.year.data,
                 expected_graduation_date=form.expected_graduation_date.data,
-                on_campus=", ".join(form.on_campus.data),
+                on_campus=', '.join(form.on_campus.data),
                 why_interested=form.why_interested.data,
                 comments=form.comments.data,
                 resume_link=form.resume_link.data,  # TODO add actual resume
@@ -133,7 +135,8 @@ def officer_registration(id):
             new_app.save()
             unverified_id.delete()
             return redirect('/user/' + id)
-        flash("Please enter valid credentials", 'alert alert-danger')
+        flash('Please enter valid responses. Text responses are limited to '
+              '10,000 characters.', 'alert alert-danger')
     return render_template('officer_registration.html', user_id=id, form=form,
                            user=unverified_id)
 
