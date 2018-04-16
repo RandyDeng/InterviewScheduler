@@ -63,9 +63,7 @@ class OfficerRegistrationForm(FlaskForm):
     position = StringField(render_kw={"disabled": True})
     phone_number = StringField('Phone Number:', validators=[
                                 InputRequired(),
-                                Length(min=1, max=50)],
-                               render_kw={"placeholder":
-                                          "Phone Number: ### - ### - ####"})
+                                Length(min=1, max=50)])
     year = SelectField('Select your year:', choices=[
                         ('1st', '1st Year'),
                         ('2nd', '2nd Year'),
@@ -85,19 +83,13 @@ class OfficerRegistrationForm(FlaskForm):
                                    'on campus:', choices=semesters)
     why_interested = TextAreaField('Why are you interested in this position?',
                                    validators=[InputRequired(),
-                                               Length(max=1000)],
-                                   render_kw={"placeholder":
-                                              "1000 characters or less"})
+                                               Length(max=10000)])
     comments = TextAreaField('Additional comments/concerns:',
-                             validators=[InputRequired(), Length(max=1000)],
-                             render_kw={"placeholder":
-                                        "1000 characters or less"})
+                             validators=[InputRequired(), Length(max=10000)])
     resume_link = StringField('Resume Link:')
     skills = TextAreaField('List 3-5 skills that make you qualified '
                            'for this position:',
-                           validators=[InputRequired(), Length(max=1000)],
-                           render_kw={"placeholder":
-                                      "1000 characters or less"})
+                           validators=[InputRequired(), Length(max=10000)])
     submit = SubmitField("Complete Registration")
 
 
@@ -108,9 +100,7 @@ class PIRegistrationForm(FlaskForm):
     position = StringField(render_kw={"disabled": True})
     phone_number = StringField('Phone Number:', validators=[
                                 InputRequired(),
-                                Length(min=1, max=50)],
-                               render_kw={"placeholder":
-                                          "Phone Number: ### - ### - ####"})
+                                Length(min=1, max=50)])
     year = SelectField('Select your year:', choices=[
                         ('1st', '1st Year'),
                         ('2nd', '2nd Year'),
@@ -130,12 +120,8 @@ class PIRegistrationForm(FlaskForm):
                                    'on campus:', choices=semesters)
     why_interested = TextAreaField('Why are you interested in this position?',
                                    validators=[InputRequired(),
-                                               Length(max=1000)],
-                                   render_kw={"placeholder":
-                                              "1000 characters or less"})
+                                               Length(max=10000)])
     comments = TextAreaField('Additional comments/concerns:',
-                             validators=[InputRequired(), Length(max=1000)],
-                             render_kw={"placeholder":
-                                        "1000 characters or less"})
+                             validators=[InputRequired(), Length(max=10000)])
     resume_link = StringField('Resume Link:')
     submit = SubmitField("Complete Registration")
