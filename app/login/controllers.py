@@ -80,7 +80,6 @@ def pi_registration(id):
         if form.validate_on_submit():
             new_app = mongo.Applicant(
                 user_id=id,
-                application_timestamp=datetime.datetime.now(),
                 semester=environment.current_semester(),
                 status=mongo.APPLICANT_STATUS[0],
                 first_name=unverified_id.first_name,
