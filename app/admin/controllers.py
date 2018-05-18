@@ -1,4 +1,4 @@
-from flask import abort, redirect, render_template
+from flask import abort, make_response, redirect, render_template
 from flask_login import login_required
 
 import json
@@ -79,6 +79,25 @@ def applications_applicant(id):
     except (mongo.Applicant.DoesNotExist,
             mongo.Applicant.MultipleObjectsReturned):
         abort(500)
+
+
+@admin.route('/applications/resume/<string:id>',
+             methods=['GET'])
+@login_required
+def applications_resume(id):
+    try:
+        applicant = mongo.Applicant.objects().get(user_id=id)
+    except (mongo.Applicant.DoesNotExist,
+            mongo.Applicant.MultipleObjectsReturned):
+        abort(500)
+
+    binary_pdf = applicant.resume
+    response = make_response(binary_pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = \
+        'inline; filename=%s.pdf' % (applicant.first_name +
+                                     '_' + applicant.last_name + '_resume')
+    return response
 
 
 @admin.route('/applications/decision/<string:decision>/<string:id>',
