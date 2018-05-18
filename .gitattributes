@@ -1,4 +1,0 @@
-app/static/* linguist-vendored
-app/templates/* linguist-language=Python
-app/admin/templates/* linguist-language=Python
-app/user/templates/* linguist-language=Python
