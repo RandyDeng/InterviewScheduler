@@ -3,7 +3,7 @@ import json
 
 from werkzeug import generate_password_hash
 
-from mongoengine import (connect, DateTimeField, Document,
+from mongoengine import (BinaryField, connect, DateTimeField, Document,
                          EmailField, StringField)
 
 from . import environment
@@ -48,7 +48,7 @@ class Applicant(Document):
     #  Short Answer Responses
     why_interested = StringField()
     comments = StringField()
-    resume_link = StringField()
+    resume = BinaryField()
 
     #  Officer Specific
     skills = StringField()

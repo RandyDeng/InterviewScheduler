@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField
 
 from wtforms import (PasswordField, SelectField, SelectMultipleField,
                      StringField, SubmitField,
@@ -87,7 +88,7 @@ class OfficerRegistrationForm(FlaskForm):
                                                Length(max=10000)])
     comments = TextAreaField('Additional comments/concerns:',
                              validators=[InputRequired(), Length(max=10000)])
-    resume_link = StringField('Resume Link:')
+    resume = FileField('Upload Resume (1MB limit, *.pdf only):')
     skills = TextAreaField('List 3-5 skills that make you qualified '
                            'for this position:',
                            validators=[InputRequired(), Length(max=10000)])
@@ -125,5 +126,5 @@ class PIRegistrationForm(FlaskForm):
                                                Length(max=10000)])
     comments = TextAreaField('Additional comments/concerns:',
                              validators=[InputRequired(), Length(max=10000)])
-    resume_link = StringField('Resume Link:')
+    resume = FileField('Upload Resume (1MB limit, *.pdf only):')
     submit = SubmitField("Complete Registration")

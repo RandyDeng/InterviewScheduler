@@ -93,7 +93,7 @@ def pi_registration(id):
                 on_campus=', '.join(form.on_campus.data),
                 why_interested=form.why_interested.data,
                 comments=form.comments.data,
-                resume_link=form.resume_link.data  # TODO add actual resume
+                resume=bytes(form.resume.data.read())
             )
             new_app.save()
             unverified_id.delete()
@@ -129,7 +129,7 @@ def officer_registration(id):
                 on_campus=', '.join(form.on_campus.data),
                 why_interested=form.why_interested.data,
                 comments=form.comments.data,
-                resume_link=form.resume_link.data,  # TODO add actual resume
+                resume=bytes(form.resume.data.read()),
                 skills=form.skills.data
             )
             new_app.save()

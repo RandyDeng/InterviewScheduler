@@ -12,7 +12,7 @@
         {% block flash %}
           {{ super() }}
         {% endblock %}
-        <form method="POST" action="/login/officer_registration/{{ user_id }}">
+        <form method="POST" action="/login/officer_registration/{{ user_id }}" enctype="multipart/form-data">
           {{ form.hidden_tag() }}
           <div class="subheading mb-3">
             {{ form.first_name(value=user.first_name) }}
@@ -54,8 +54,8 @@
             {{ form.skills }}
           </div>
           <div class="subheading mb-3 spacer">
-            {{ form.resume_link.label }}
-            {{ form.resume_link }}
+            {{ form.resume.label }}
+            {{ form.resume }}
           </div>
           <div class="subheading mb-3">
             {{ form.submit(class='form-module-button') }}
