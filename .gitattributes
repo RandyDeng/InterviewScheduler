@@ -1,3 +1,6 @@
-app/static/css/bootstrap* linguist-vendored=true
-app/static/css/freelancer* linguist-vendored=true
-app/*.scss linguist-vendored=true
+app/static/css/bootstrap*.css linguist-vendored
+app/static/css/login*.css linguist-vendored
+app/static/css/admin*.css linguist-vendored
+app/static/css/freelancer*.css linguist-vendored
+*.scss linguist-vendored
+app/email_templates/* linguist-detectable=false
