@@ -22,6 +22,11 @@ def route_by_id(id):
         return ('/login/officer_registration/' + id)
 
 
+@login.route('/<string:id>', methods=['GET'])
+def registration(id):
+    return redirect(route_by_id(id))
+
+
 @login.route('/admin', methods=['GET', 'POST'])
 def admin():
     logout_user()
@@ -62,11 +67,6 @@ def user():
         flash('Please enter a valid name and Georgia Tech email',
               'alert alert-danger')
     return render_template('user.html', form=form)
-
-
-@login.route('/<string:id>', methods=['GET'])
-def registration(id):
-    return redirect(route_by_id(id))
 
 
 @login.route('/pi_registration/<string:id>', methods=['GET', 'POST'])
