@@ -7,8 +7,8 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header" data-background-color={{ color }}>
-                    <h4 class="title">Applicant: {{ applicant.first_name }} {{ applicant.last_name }}</h4>
-                    <p class="category">This is a detailed view of the applicant.</p>
+                    <h4 class="title">Basic Information: {{ applicant.first_name }} {{ applicant.last_name }}</h4>
+                    <p class="category">This section contains information relevant for all positions in The Hive</p>
                 </div>
                 <div class="card-content table-responsive">
                     <table class="table table-hover">
@@ -52,12 +52,6 @@
                                 {% endautoescape %}
                             </tr>
                             <tr>
-                                <td>List 3-5 skills that are relevant to the position</td>
-                                {% autoescape false %}
-                                <td>{{ applicant.skills | replace("\n", "<br>") }}</td>
-                                {% endautoescape %}
-                            </tr>
-                            <tr>
                                 <td>Additional Comments</td>
                                 {% autoescape false %}
                                 <td>{{ applicant.comments | replace("\n", "<br>") }}</td>
@@ -69,6 +63,26 @@
                             </tr>
                                 <td>Resume</td>
                                 <td><a href='/admin/applications/resume/{{ applicant.user_id }}' target="_blank"><i class="fa fa-2x fa-paperclip" aria-hidden="true"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header" data-background-color={{ color }}>
+                    <h4 class="title">Officer Specific Information: {{ applicant.first_name }} {{ applicant.last_name }}</h4>
+                    <p class="category">This section contains information relevant to those applying for officer positions</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <td>List 3-5 skills that are relevant to the position</td>
+                                {% autoescape false %}
+                                <td>{{ applicant.skills | replace("\n", "<br>") }}</td>
+                                {% endautoescape %}
                             </tr>
                         </tbody>
                     </table>
