@@ -69,7 +69,7 @@ def email_verification():
 
 @login.route('/registration/<string:id>', methods=['GET', 'POST'])
 def registration(id):
-    if not user_login_manager.first_login(id, flashing=False):
+    if not user_login_manager.first_login(id):
         abort(404)
 
     form = RegistrationForm()
