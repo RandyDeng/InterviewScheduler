@@ -57,8 +57,6 @@ def user():
             )
             flash('Registration sent!', 'alert alert-success')
             return redirect(url_for('.email_verification'))
-        flash('Please enter a valid name and Georgia Tech email',
-              'alert alert-danger')
     return render_template('user.html', form=form)
 
 
