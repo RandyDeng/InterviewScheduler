@@ -1,11 +1,14 @@
-from flask import abort, make_response, redirect, render_template
-from flask_login import login_required
-
 import json
 import urllib
 
+from flask import (abort, make_response, redirect,
+                   flash, render_template, request)
+from flask_login import login_required
+from werkzeug import generate_password_hash
+
 from app.utils import environment, mongo
 
+from .forms import UpdatePasswordForm
 from . import admin, query
 
 
@@ -28,10 +31,20 @@ def dashboard():
     return render_template('dashboard.html', **kwargs)
 
 
-@admin.route('/control_panel', methods=['GET'])
+@admin.route('/control_panel', methods=['GET', 'POST'])
 @login_required
 def control_panel():
-    return render_template('control_panel.html')
+    password_form = UpdatePasswordForm()
+    if request.method == 'POST':
+        if password_form.validate_on_submit():
+            admin = mongo.Admins.objects.get(
+                username=password_form.username.data)
+            admin.password = generate_password_hash(
+                password_form.new_password.data)
+            admin.save()
+            flash('Password has been updated successfully!',
+                  'alert alert-success')
+    return render_template('control_panel.html', password_form=password_form)
 
 
 @admin.route('/applications', methods=['GET'])

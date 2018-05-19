@@ -7,54 +7,39 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" data-background-color="purple">
-                    <h4 class="title">Update Account</h4>
+                    <h4 class="title">Update Admin Password</h4>
                     <p class="category">Keep the admin account secure!</p>
                 </div>
+                {% block flash %}
+                  {{ super() }}
+                {% endblock %}
                 <div class="card-content">
-                    <form>
+                    <form method="POST" action="{{ url_for('admin.control_panel') }}">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Current Username</label>
-                                    <input type="text" class="form-control">
+                                    {{ password_form.username(class='form-control') }}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">Current Password</label>
-                                    <input type="text" class="form-control">
+                                    {{ password_form.password(class='form-control') }}
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">New Username</label>
-                                    <input type="text" class="form-control">
+                                    {{ password_form.new_password(class='form-control') }}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group label-floating">
-                                    <label class="control-label">New Password</label>
-                                    <input type="text" class="form-control">
+                                    {{ password_form.new_password_copy(class='form-control') }}
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Confirm New Username</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Confirm New Password</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                        {{ password_form.submit(class='btn btn-primary pull-right') }}
                         <div class="clearfix"></div>
                     </form>
                 </div>
