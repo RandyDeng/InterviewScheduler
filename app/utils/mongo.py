@@ -78,8 +78,3 @@ def unverified_user_generator(applicant):
                             last_name=applicant.last_name,
                             email=applicant.email,
                             position=applicant.position)
-
-
-# regenerate unique url given user_id
-def application_link_generator(id):
-    return environment.variables['BASE_URL'] + 'user/' + id
