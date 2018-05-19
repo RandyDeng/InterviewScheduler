@@ -30,7 +30,7 @@ def admin():
                     form.username.data, form.password.data)):
                 user = admin_login_manager.User(form.username.data)
                 login_user(user)
-                return redirect(url_for('.admin'))
+                return redirect(url_for('admin.dashboard'))
         flash('Invalid username and password', 'alert alert-danger')
     return render_template('admin.html', form=form)
 
