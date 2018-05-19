@@ -670,6 +670,7 @@ h2.title {
     overflow: auto;
     width: 260px;
     z-index: 4;
+    font-weight: 400;
 }
 
 .sidebar .sidebar-wrapper .dropdown .dropdown-backdrop,
@@ -4945,6 +4946,7 @@ footer .btn {
     border-radius: 3px;
     color: rgba(0, 0, 0, 0.87);
     background: #fff;
+    font-weight: 400;
 }
 
 .card .card-height-indicator {
@@ -4958,6 +4960,7 @@ footer .btn {
 .card .title {
     margin-top: 0;
     margin-bottom: 5px;
+    font-weight: 500;
 }
 
 .card .card-image {
