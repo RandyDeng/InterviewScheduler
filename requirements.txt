@@ -1,5 +1,6 @@
 Flask==0.12.2
 Flask_Login==0.4.1
+Flask-SSLify==0.1.5
 Flask_WTF==0.14.2
 gunicorn==19.7.1
 humanize==0.5.1

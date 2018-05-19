@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_sslify import SSLify
 
 from app.login.admin_login_manager import login_manager
 
@@ -9,6 +10,7 @@ from app.login.controllers import login as login_module
 
 app = Flask(__name__, static_folder='static')
 app.config.from_object('config')
+sslify = SSLify(app)
 
 login_manager.init_app(app)
 
