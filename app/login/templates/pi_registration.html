@@ -12,7 +12,7 @@
         {% block flash %}
           {{ super() }}
         {% endblock %}
-        <form method="POST" action="/login/pi_registration/{{ user_id }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url_for('login.registration', id=user_id) }}" enctype="multipart/form-data">
           {{ form.hidden_tag() }}
           <div class="subheading mb-3">
             {{ form.first_name(value=user.first_name) }}
