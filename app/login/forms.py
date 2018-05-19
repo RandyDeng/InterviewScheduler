@@ -89,42 +89,9 @@ class OfficerRegistrationForm(FlaskForm):
     comments = TextAreaField('Additional comments/concerns:',
                              validators=[InputRequired(), Length(max=10000)])
     resume = FileField('Upload Resume (1MB limit, *.pdf only):')
+    submit = SubmitField("Complete Registration")
+
+    #  Officer specific questions
     skills = TextAreaField('List 3-5 skills that make you qualified '
                            'for this position:',
                            validators=[InputRequired(), Length(max=10000)])
-    submit = SubmitField("Complete Registration")
-
-
-class PIRegistrationForm(FlaskForm):
-    first_name = StringField(render_kw={"disabled": True})
-    last_name = StringField(render_kw={"disabled": True})
-    email = EmailField(render_kw={"disabled": True})
-    position = StringField(render_kw={"disabled": True})
-    phone_number = StringField('Phone Number:', validators=[
-                                InputRequired(),
-                                Length(min=1, max=50)],
-                               render_kw={'placeholder': "Phone Number"})
-    year = SelectField('Select your year:', choices=[
-                        ('1st', '1st Year'),
-                        ('2nd', '2nd Year'),
-                        ('3rd', '3rd Year'),
-                        ('4th', '4th Year'),
-                        ('5+', '5+ Years'),
-                        ('Master', 'Master'),
-                        ('PhD', 'PhD'),
-                        ('Other', 'Other')])
-    expected_graduation_date = DateField('Expected Graduation Date:',
-                                         validators=[InputRequired()],
-                                         render_kw={"pattern":
-                                                    "[0-9]{2}-[0-9]{2}[0-9]{4}"
-                                                    })
-    semesters = [(s, s) for s in next_semesters()]
-    on_campus = MultiCheckboxField('Please check which semesters you will be '
-                                   'on campus:', choices=semesters)
-    why_interested = TextAreaField('Why are you interested in this position?',
-                                   validators=[InputRequired(),
-                                               Length(max=10000)])
-    comments = TextAreaField('Additional comments/concerns:',
-                             validators=[InputRequired(), Length(max=10000)])
-    resume = FileField('Upload Resume (1MB limit, *.pdf only):')
-    submit = SubmitField("Complete Registration")
