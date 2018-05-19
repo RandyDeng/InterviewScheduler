@@ -19,7 +19,7 @@ from app.utils.environment import next_semesters, positions
 
 
 # Custom validators: This section contains all custom validators
-# for the forms. Custom validators have the option of using flask
+# for the login forms. Custom validators have the option of using flask
 # to flash a message to the user. However, keep in mind that these
 # messages assume a specific format to work and that other messages
 # from the controller files may also appear.
