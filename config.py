@@ -23,3 +23,6 @@ CSRF_SESSION_KEY = environment.variables['CSRF_SESSION_KEY']
 
 # Secret key for signing cookies
 SECRET_KEY = environment.variables['SECRET_KEY']
+
+# Limit upload size to 3 MB before throwing errors
+MAX_CONTENT_LENGTH = 3 * 1024 * 1024
