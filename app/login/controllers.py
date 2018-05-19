@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user
 
 from app.utils import environment, mailer, mongo
 
-from .forms import (AdminForm, RegistrationForm, UserForm)
+from .forms import AdminForm, RegistrationForm, UserForm
 from . import login, admin_login_manager, user_login_manager
 
 
