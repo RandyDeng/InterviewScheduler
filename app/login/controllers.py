@@ -13,9 +13,9 @@ def application_link_generator(id):
 
 @login.route('/<string:id>', methods=['GET'])
 def route(id):
-    if user_login_manager.first_login(id, flashing=True):
+    if user_login_manager.first_login(id):
         return redirect(url_for('.registration', id=id))
-    if user_login_manager.valid_applicant(id, flashing=False):
+    if user_login_manager.valid_applicant(id):
         return redirect(url_for('user.route', id=id))
     return redirect(url_for('.user'))
 

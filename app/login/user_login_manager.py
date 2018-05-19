@@ -1,26 +1,19 @@
-from flask import flash
 
 from app.utils.mongo import Applicant, UnverifiedUserId
 
 
-def valid_applicant(id, flashing):
+def valid_applicant(id):
     try:
         Applicant.objects().get(user_id=id)
         return True
     except (Applicant.DoesNotExist, Applicant.MultipleObjectsReturned):
-        if flashing:
-            flash("You are not authorized to access this page",
-                  'alert alert-danger')
         return False
 
 
-def first_login(id, flashing):
+def first_login(id):
     try:
         UnverifiedUserId.objects().get(user_id=id)
         return True
     except (UnverifiedUserId.DoesNotExist,
             UnverifiedUserId.MultipleObjectsReturned):
-        if flashing:
-            flash("You are not authorized to access this page",
-                  'alert alert-danger')
         return False
