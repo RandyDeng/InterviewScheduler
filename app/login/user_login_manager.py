@@ -10,7 +10,7 @@ def valid_applicant(id, flashing):
     except (Applicant.DoesNotExist, Applicant.MultipleObjectsReturned):
         if flashing:
             flash("You are not authorized to access this page",
-                  'alert alert-danger', 'alert alert-danger')
+                  'alert alert-danger')
         return False
 
 
@@ -22,5 +22,5 @@ def first_login(id, flashing):
             UnverifiedUserId.MultipleObjectsReturned):
         if flashing:
             flash("You are not authorized to access this page",
-                  'alert alert-danger', 'alert alert-danger')
+                  'alert alert-danger')
         return False
