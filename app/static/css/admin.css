@@ -3345,7 +3345,7 @@ select.form-control[multiple],
 }
 
 .applications.applications-success {
-    background-color: #5cb860;
+    background-color: #05b205;
     color: #ffffff;
     border-radius: 3px;
     box-shadow: 0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2);
@@ -3361,7 +3361,7 @@ select.form-control[multiple],
 }
 
 .applications.applications-info {
-    background-color: #4fc6f2;
+    background-color: #00b1e8;
     color: #ffffff;
     border-radius: 3px;
     box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2);
