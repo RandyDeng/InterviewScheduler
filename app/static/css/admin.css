@@ -3300,6 +3300,168 @@ select.form-control[multiple],
     font-weight: 400;
 }
 
+.applications {
+    border: 0;
+    border-radius: 0;
+    position: relative;
+    padding: 20px 15px;
+    line-height: 20px;
+    margin-bottom: 1em;
+    font-weight: 400;
+    font-size: 1em;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.applications,
+.applications.applications-default {
+    background-color: white;
+    color: #555555;
+    border-radius: 3px;
+    box-shadow: 0 12px 20px -10px rgba(255, 255, 255, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 255, 255, 0.2);
+}
+
+.applications a,
+.applications .applications-link,
+.applications.applications-default a,
+.applications.applications-default .applications-link {
+    color: #555555;
+}
+
+.applications.applications-primary {
+    background-color: #AC00AF;
+    color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
+}
+
+.applications.applications-primary:hover {
+    background: #932783;
+}
+
+.applications.applications-primary a,
+.applications.applications-primary .applications-link {
+    color: #ffffff;
+}
+
+.applications.applications-success {
+    background-color: #5cb860;
+    color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2);
+}
+
+.applications.applications-success:hover {
+    background: #207233;
+}
+
+.applications.applications-success a,
+.applications.applications-success .applications-link {
+    color: #ffffff;
+}
+
+.applications.applications-info {
+    background-color: #4fc6f2;
+    color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 12px 20px -10px rgba(0, 188, 212, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(0, 188, 212, 0.2);
+}
+
+.applications.applications-info:hover {
+    background: #006d77;
+}
+
+.applications.applications-info a,
+.applications.applications-info .applications-link {
+    color: #ffffff;
+}
+
+.applications.applications-warning {
+    background-color: #ffa21a;
+    color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+}
+
+.applications.applications-warning:hover {
+    background: #965c0a;
+}
+
+.applications.applications-warning a,
+.applications.applications-warning .applications-link {
+    color: #ffffff;
+}
+
+.applications.applications-danger {
+    background-color: #f55a4e;
+    color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 12px 20px -10px rgba(244, 67, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2);
+}
+
+.applications.applications-danger:hover {
+    background: #8c2727;
+}
+
+.applications.applications-danger a,
+.applications.applications-danger .applications-link {
+    color: #ffffff;
+}
+
+.applications.applications-rose {
+    background-color: #eb3573;
+    color: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 12px 20px -10px rgba(233, 30, 99, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(233, 30, 99, 0.2);
+}
+
+.applications.applications-rose a,
+.applications.applications-rose .applications-link {
+    color: #ffffff;
+}
+
+.applications-info,
+.applications-danger,
+.applications-warning,
+.applications-success {
+    color: #ffffff;
+}
+
+.applications-default a,
+.applications-default .applications-link {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.applications i[data-notify="icon"] {
+    font-size: 30px;
+    display: block;
+    left: 15px;
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+}
+
+.applications span {
+    display: block;
+    max-width: 89%;
+}
+
+.applications .applications-icon {
+    display: block;
+    float: left;
+    margin-right: 15px;
+}
+
+.applications .applications-icon i {
+    margin-top: -7px;
+    top: 5px;
+    position: relative;
+}
+
+.applications.applications-with-icon {
+    padding-left: 65px;
+}
+
 .table>thead>tr>th {
     border-bottom-width: 1px;
     font-size: 1em;
