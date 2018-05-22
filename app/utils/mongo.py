@@ -52,10 +52,10 @@ class Applicant(Document):
     status = StringField(default=APPLICANT_STATUS[0])
 
     #  Basic User Information
-    first_name = StringField(required=True)
-    last_name = StringField(required=True)
-    email = EmailField(required=True)
-    position = StringField(required=True)
+    first_name = StringField()
+    last_name = StringField()
+    email = EmailField()
+    position = StringField()
     phone_number = StringField()
     year = StringField()
     expected_graduation_date = DateTimeField()
@@ -82,16 +82,16 @@ class InterviewSchedule(Document):
 
 
 class UnverifiedUserId(Document):
-    user_id = StringField(required=True)
-    first_name = StringField(required=True)
-    last_name = StringField(required=True)
-    email = EmailField(required=True)
-    position = StringField(required=True)
+    user_id = StringField()
+    first_name = StringField()
+    last_name = StringField()
+    email = EmailField()
+    position = StringField()
 
 
 class Admins(Document):
-    username = StringField(required=True)
-    password = StringField(required=True)
+    username = StringField()
+    password = StringField()
 
 
 #  given Applicant, return UnverifiedUserID
