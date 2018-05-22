@@ -27,13 +27,13 @@
                 <div class="sidebar-wrapper">
                     <ul class="nav">
                         <li {% block dashboard %}{% endblock %}>
-                            <a href="/user/dashboard/{{ user_id }}">
+                            <a href="/user/dashboard/{{ applicant.user_id }}">
                                 <i class="material-icons">dashboard</i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <li {% block interviews %}{% endblock %}>
-                            <a href="/user/interviews/{{ user_id }}">
+                            <a href="/user/interviews/{{ applicant.user_id }}">
                                 <i class="material-icons">content_paste</i>
                                 <p>Interviews</p>
                             </a>
@@ -51,7 +51,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="{{ user_id }}"> Interview Scheduler </a>
+                            <a class="navbar-brand" href="{{ applicant.user_id }}"> Interview Scheduler </a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
