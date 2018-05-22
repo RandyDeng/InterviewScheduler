@@ -146,6 +146,12 @@ def applications_decision(decision, id):
     return redirect('/admin/applications/applicant/' + id)
 
 
+@admin.route('/interview_scheduler', methods=['GET', 'POST'])
+@login_required
+def interview_scheduler():
+    return render_template('interview_scheduler.html')
+
+
 @admin.route('/history', methods=['GET'])
 @login_required
 def history():
