@@ -64,7 +64,7 @@ current_rejected = urllib.parse.quote(json.dumps(
 
 all_unverified = urllib.parse.quote(json.dumps(
     {
-        'title': 'Unverified Users',
+        'title': 'Unverified Applicants',
         'mongo_object': 'UnverifiedUserId',
         'color': 'purple',
         'query': {}
