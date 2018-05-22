@@ -20,12 +20,19 @@ def home():
     return render_template('home.html')
 
 
-@app.errorhandler(400)
 @app.errorhandler(404)
-@app.errorhandler(500)
-@app.errorhandler(503)
-def error(error):
+def error404(error):
     return render_template('errors/404.html'), 404
+
+
+@app.errorhandler(500)
+def error500(error):
+    return render_template('errors/500.html'), 500
+
+
+@app.errorhandler(503)
+def error503(error):
+    return render_template('errors/503.html'), 503
 
 
 app.register_blueprint(login_module, url_prefix='/login')
