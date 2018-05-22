@@ -76,7 +76,6 @@ def registration(id):
         if form.validate_on_submit():
             new_app = mongo.Applicant(
                 user_id=id,
-                semester=environment.current_semester(),
                 status=mongo.APPLICANT_STATUS[0],
                 first_name=unverified_id.first_name,
                 last_name=unverified_id.last_name,
