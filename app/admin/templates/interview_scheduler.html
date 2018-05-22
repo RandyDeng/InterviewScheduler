@@ -1,0 +1,34 @@
+{% extends "base_admin.html" %}
+{% block applications %}
+    class="active"
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title">Interview Scheduler</h4>
+                        <p class="category">Create, match, and schedule! Easy as 1, 2, 3!
+                        </p>
+                    </div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form method="POST" action="{{ url_for('admin') }}">
+
+                                </form>
+                                <a href=applications/{{ query_current_all }}>
+                                    <div class="applications applications-info">
+                                        <span>All Applicants</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
