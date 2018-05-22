@@ -5,7 +5,7 @@ from werkzeug import generate_password_hash
 
 from mongoengine import (BinaryField, connect, DateTimeField, Document,
                          EmailField, EmbeddedDocument, EmbeddedDocumentField,
-                         IntegerField, ListField, StringField)
+                         IntField, ListField, StringField)
 
 from . import environment
 
@@ -60,14 +60,25 @@ class Applicant(Document):
     year = StringField()
     expected_graduation_date = DateTimeField()
     on_campus = StringField()
-
-    #  Short Answer Information
     why_interested = StringField()
     comments = StringField()
-    resume = BinaryField()
+    resume = BinaryField()  # file restricted to < 1MB and *.pdf only
 
     #  Officer Specific Information
     skills = StringField()
+
+
+class TimeSlot(EmbeddedDocument):
+    interviewee = StringField()
+    start = DateTimeField()
+    end = DateTimeField()
+    length = IntField()  # length of time slot in minutes
+
+
+class InterviewSchedule(Document):
+    semester = StringField(default=environment.current_semester())
+    timestamp = DateTimeField(default=datetime.datetime.now)
+    timeslots = ListField(EmbeddedDocumentField(TimeSlot))
 
 
 class UnverifiedUserId(Document):
