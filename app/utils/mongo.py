@@ -29,8 +29,8 @@ APPLICANT_STATUS = {
 class Applicant(Document):
     user_id = StringField(required=True)  # main applicant identifier
     application_timestamp = DateTimeField(default=datetime.datetime.now)
-    semester = StringField(environment.current_semester())
-    status = StringField(default=APPLICANT_STATUS[0])  # see APPLICANT_STATUS
+    semester = StringField(default=environment.current_semester())
+    status = StringField(default=APPLICANT_STATUS[0])
 
     #  Basic User Information
     first_name = StringField(required=True)
@@ -42,12 +42,12 @@ class Applicant(Document):
     expected_graduation_date = DateTimeField()
     on_campus = StringField()
 
-    #  Short Answer Responses
+    #  Short Answer Information
     why_interested = StringField()
     comments = StringField()
     resume = BinaryField()
 
-    #  Officer Specific
+    #  Officer Specific Information
     skills = StringField()
 
 
