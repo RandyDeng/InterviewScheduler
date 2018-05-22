@@ -1,6 +1,7 @@
 from flask import abort, redirect, render_template, url_for
 
 from app.login.user_login_manager import valid_applicant
+from app.utils.mongo import Applicant
 
 from . import user
 
@@ -17,11 +18,13 @@ def route(id):
 def dashboard(id):
     if not valid_applicant(id):
         abort(404)
-    return render_template('user_dashboard.html', user_id=id)
+    applicant = Applicant.objects().get(user_id=id)
+    return render_template('user_dashboard.html', applicant=applicant)
 
 
 @user.route('/interviews/<string:id>', methods=['GET'])
-def documentation(id):
+def interviews(id):
     if not valid_applicant(id):
         abort(404)
-    return render_template('user_interviews.html', user_id=id)
+    applicant = Applicant.objects().get(user_id=id)
+    return render_template('user_interviews.html', applicant=applicant)
