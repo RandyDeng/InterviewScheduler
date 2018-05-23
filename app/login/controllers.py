@@ -3,8 +3,7 @@ from flask_login import login_user, logout_user
 
 from app.utils import environment, mailer, mongo
 
-from .forms import AdminForm, RegistrationForm, UserForm
-from . import login, admin_login_manager, user_login_manager
+from . import forms, login, admin_login_manager, user_login_manager
 
 
 def application_link_generator(id):
@@ -23,7 +22,7 @@ def route(id):
 @login.route('/admin', methods=['GET', 'POST'])
 def admin():
     logout_user()
-    form = AdminForm()
+    form = forms.AdminForm()
     if request.method == 'POST':
         if form.validate_on_submit():
             if (admin_login_manager.verify_credentials(
@@ -37,7 +36,7 @@ def admin():
 
 @login.route('/user', methods=['GET', 'POST'])
 def user():
-    form = UserForm()
+    form = forms.UserForm()
     try:
         choices = [(p, p) for p in mongo.AvailablePositions.objects.first()[
                     'available_positions']]
@@ -81,7 +80,7 @@ def registration(id):
     if not user_login_manager.first_login(id):
         abort(404)
 
-    form = RegistrationForm()
+    form = forms.RegistrationForm()
     unverified_id = mongo.UnverifiedUser.objects().get(user_id=id)
     if request.method == 'POST':
         if form.validate_on_submit():
