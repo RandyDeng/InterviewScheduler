@@ -43,9 +43,9 @@ positions = {
 # The starting dates are put slightly before the first day of class
 # since most of The Hive hiring happens at the beginning of the semester
 # rather than at the end.
-fall_start = {'month': 8, 'day': 15}
-spring_start = {'month': 1, 'day': 1}
-summer_start = {'month': 5, 'day': 10}
+FALL_START = {'month': 8, 'day': 15}
+SPRING_START = {'month': 1, 'day': 1}
+SUMMER_START = {'month': 5, 'day': 10}
 
 
 # Determines the current semester.
@@ -53,15 +53,15 @@ summer_start = {'month': 5, 'day': 10}
 def current_semester():
     now = datetime.date.today()
     fall_begin = datetime.date(year=now.year,
-                               month=fall_start['month'],
-                               day=fall_start['day'])
+                               month=FALL_START['month'],
+                               day=FALL_START['day'])
     spring_begin = datetime.date(year=now.year,
-                                 month=spring_start['month'],
-                                 day=spring_start['day'])
+                                 month=SPRING_START['month'],
+                                 day=SPRING_START['day'])
     spring_next = spring_begin.replace(year=now.year + 1)
     summer_begin = datetime.date(year=now.year,
-                                 month=summer_start['month'],
-                                 day=summer_start['day'])
+                                 month=SUMMER_START['month'],
+                                 day=SUMMER_START['day'])
 
     if now > fall_begin and now < spring_next:
         return ("Fall " + str(now.year))
