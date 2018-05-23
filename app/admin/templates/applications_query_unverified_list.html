@@ -11,12 +11,25 @@
                     <p class="category">Unverified Applicants are people who only filled out the initial form, but not the one emailed to them</p>
                 </div>
                 <div class="card-content table-responsive">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            {% block flash %}
+                              {{ super() }}
+                            {% endblock %}
+                        </div>
+                    </div>
                     <table class="table table-hover">
                         <thead class="text">
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
                             <th>Position</th>
+                            <th>
+                                <form method="POST" onsubmit="return confirm('Delete all unverified users?\n\nIMPORTANT: SENSITIVE DATA MAY BE DELETED IF DONE DURING THE SEMESTER. USE WITH CAUTION.')" action="{{ url_for('admin.applications_query', urlquery=query_all_unverified) }}">
+                                    {{ form.hidden_tag() }}
+                                    {{ form.submit(class="applications applications-danger applications-sm") }}
+                                </form>
+                            </th>
                         </thead>
                         <tbody>
                             {% for user in unverified_users %}
