@@ -95,13 +95,6 @@ class Admins(Document):
 
 
 #  given Applicant, return UnverifiedUserID
-def unverified_user_generator(applicant):
-    user_id_json = {'first_name': applicant.first_name,
-                    'last_name': applicant.last_name,
-                    'email': applicant.email}
-    return UnverifiedUserId(user_id=generate_password_hash(
-                            json.dumps(user_id_json)),
-                            first_name=applicant.first_name,
-                            last_name=applicant.last_name,
-                            email=applicant.email,
-                            position=applicant.position)
+def unverified_user_generator(**kwargs):
+    kwargs['user_id'] = generate_password_hash(json.dumps(kwargs))
+    return UnverifiedUserId(**kwargs)

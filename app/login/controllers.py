@@ -40,11 +40,13 @@ def user():
     form = UserForm()
     if (request.method == 'POST'):
         if form.validate_on_submit():
-            new_app = mongo.Applicant(email=form.email.data,
-                                      first_name=form.first_name.data,
-                                      last_name=form.last_name.data,
-                                      position=form.position.data)
-            unverified_user = mongo.unverified_user_generator(new_app)
+            kwargs = {
+                'email': form.email.data,
+                'first_name': form.first_name.data,
+                'last_name': form.last_name.data,
+                'position': form.position.data
+            }
+            unverified_user = mongo.unverified_user_generator(**kwargs)
             unverified_user.save()
             mailer.send_email_template(
                 form.email.data,
