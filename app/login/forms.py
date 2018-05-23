@@ -15,7 +15,8 @@ from wtforms import (PasswordField, SelectField, SelectMultipleField,
 from wtforms.fields.html5 import DateField, EmailField
 from wtforms.validators import InputRequired, Length, ValidationError
 
-from app.utils.environment import next_semesters, POSITIONS
+from app.utils.environment import next_semesters
+from app.utils.mongo import AvailablePositions
 
 
 # Custom validators: This section contains all custom validators
@@ -44,6 +45,16 @@ def check_gt_email(message, min=12, max=50):
                     flash(message, 'alert alert-danger')
                     raise ValidationError(message)
     return _check_gt_email
+
+
+def check_position(message):
+    def _check_position(form, field):
+        choices = [(p, p) for p in AvailablePositions.objects.first()[
+                    'available_positions']]
+        if field.data not in choices:
+            flash(message, 'alert alert-danger')
+            raise ValidationError(message)
+    return _check_position
 
 
 def check_phone_number(message):
@@ -155,14 +166,10 @@ class UserForm(FlaskForm):
             '{} and {} characters long')],
         render_kw={"placeholder": "Georgia Tech Email"})
     position = SelectField(
-        'Position you are applying for:', choices=[
-            (POSITIONS['PI'], POSITIONS['PI']),
-            (POSITIONS['President'], POSITIONS['President']),
-            (POSITIONS['VP'], POSITIONS['VP']),
-            (POSITIONS['DoF'], POSITIONS['DoF']),
-            (POSITIONS['DoO'], POSITIONS['DoO']),
-            (POSITIONS['DoC'], POSITIONS['DoC']),
-            (POSITIONS['DoN'], POSITIONS['DoN'])])
+        'Position you are applying for:',
+        validators=[check_position(
+            'The position you applied for is not available at this time')],
+        choices=[])
     submit = SubmitField("Begin Registration")
 
 

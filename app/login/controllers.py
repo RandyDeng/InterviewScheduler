@@ -38,6 +38,9 @@ def admin():
 @login.route('/user', methods=['GET', 'POST'])
 def user():
     form = UserForm()
+    choices = [(p, p) for p in mongo.AvailablePositions.objects.first()[
+                'available_positions']]
+    form.position.choices = choices
     if (request.method == 'POST'):
         if form.validate_on_submit():
             kwargs = {
