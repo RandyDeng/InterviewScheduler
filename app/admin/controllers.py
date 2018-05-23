@@ -8,7 +8,7 @@ from werkzeug import generate_password_hash
 
 from app.utils import environment, mongo
 
-from .forms import UpdatePasswordForm
+from .forms import DeleteUnverifiedUsersForm, UpdatePasswordForm
 from . import admin, query
 
 
@@ -53,26 +53,29 @@ def applications():
     return render_template('applications.html', **query.get_kwargs())
 
 
-@admin.route('/applications/<string:urlquery>', methods=['GET'])
+@admin.route('/applications/<string:urlquery>', methods=['GET', 'POST'])
 @login_required
 def applications_query(urlquery):
     urlquery = json.loads(urllib.parse.unquote(urlquery))
-    title = urlquery['title']
     mongo_object = urlquery['mongo_object']
-    color = urlquery['color']
-    query = urlquery['query']
+    raw_query = urlquery['query']
     if mongo_object == 'Applicant':
-        applicants = mongo.Applicant.objects(__raw__=query)
-        return render_template('applications_query_applicant_list.html',
-                               title=title,
-                               color=color,
-                               applicants=applicants)
+        urlquery['applicants'] = mongo.Applicant.objects(__raw__=raw_query)
+        return render_template(
+            'applications_query_applicant_list.html', **urlquery)
     elif mongo_object == 'UnverifiedUser':
-        unverified_users = mongo.UnverifiedUser.objects(__raw__=query)
+        form = DeleteUnverifiedUsersForm()
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                mongo.UnverifiedUser.objects.delete()
+                flash('All unverified users have been successfully deleted',
+                      'alert alert-success')
+        urlquery['form'] = form
+        urlquery['unverified_users'] = mongo.UnverifiedUser.objects(
+            __raw__=raw_query)
+        urlquery.update(query.get_kwargs())
         return render_template('applications_query_unverified_list.html',
-                               title=title,
-                               color=color,
-                               unverified_users=unverified_users)
+                               **urlquery)
 
 
 @admin.route('/applications/applicant/<string:id>', methods=['GET'])

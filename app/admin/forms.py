@@ -42,3 +42,7 @@ class UpdatePasswordForm(FlaskForm):
             flash('Your new password does not match', 'alert alert-danger')
             return False
         return True
+
+
+class DeleteUnverifiedUsersForm(FlaskForm):
+    submit = SubmitField("Delete All Unverified Applicants")
