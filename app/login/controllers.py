@@ -8,7 +8,7 @@ from . import login, admin_login_manager, user_login_manager
 
 
 def application_link_generator(id):
-    return (environment.variables['BASE_URL'] + 'user/' + id)
+    return (environment.ENV_VARIABLES['BASE_URL'] + 'user/' + id)
 
 
 @login.route('/<string:id>', methods=['GET'])
@@ -91,13 +91,13 @@ def registration(id):
                 resume=bytes(form.resume.data.read())
             )
 
-            if not unverified_id.position == environment.positions['PI']:
+            if not unverified_id.position == environment.POSITIONS['PI']:
                 new_app.skills = form.skills.data
 
             new_app.save()
             unverified_id.delete()
             return redirect(url_for('user.route', id=id))
-    if unverified_id.position == environment.positions['PI']:
+    if unverified_id.position == environment.POSITIONS['PI']:
         return render_template('pi_registration.html', user_id=id, form=form,
                                user=unverified_id)
     else:

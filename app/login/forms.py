@@ -15,7 +15,7 @@ from wtforms import (PasswordField, SelectField, SelectMultipleField,
 from wtforms.fields.html5 import DateField, EmailField
 from wtforms.validators import InputRequired, Length, ValidationError
 
-from app.utils.environment import next_semesters, positions
+from app.utils.environment import next_semesters, POSITIONS
 
 
 # Custom validators: This section contains all custom validators
@@ -156,13 +156,13 @@ class UserForm(FlaskForm):
         render_kw={"placeholder": "Georgia Tech Email"})
     position = SelectField(
         'Position you are applying for:', choices=[
-            (positions['PI'], positions['PI']),
-            (positions['President'], positions['President']),
-            (positions['VP'], positions['VP']),
-            (positions['DoF'], positions['DoF']),
-            (positions['DoO'], positions['DoO']),
-            (positions['DoC'], positions['DoC']),
-            (positions['DoN'], positions['DoN'])])
+            (POSITIONS['PI'], POSITIONS['PI']),
+            (POSITIONS['President'], POSITIONS['President']),
+            (POSITIONS['VP'], POSITIONS['VP']),
+            (POSITIONS['DoF'], POSITIONS['DoF']),
+            (POSITIONS['DoO'], POSITIONS['DoO']),
+            (POSITIONS['DoC'], POSITIONS['DoC']),
+            (POSITIONS['DoN'], POSITIONS['DoN'])])
     submit = SubmitField("Begin Registration")
 
 

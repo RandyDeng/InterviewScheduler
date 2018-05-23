@@ -7,7 +7,7 @@ import os
 # These variables contain extremely sensitive information regarding
 # the project and should not be disclosed to anyone except
 # the developers working on this project.
-variables = {
+ENV_VARIABLES = {
   'BASE_URL': os.environ.get('BASE_URL'),
   'CSRF_SESSION_KEY': os.environ.get('CSRF_SESSION_KEY'),
   'GMAIL_PASSWORD': os.environ.get('GMAIL_PASSWORD'),
@@ -23,7 +23,7 @@ variables = {
 # at all times and some may not go through the Interview Scheduler
 # process.
 # Currently, only PI and the core officer positions are supported.
-positions = {
+POSITIONS = {
     'President': 'President',
     'VP': 'Vice President',
     'DoF': 'Director of Finances',

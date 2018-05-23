@@ -19,8 +19,8 @@ class Emailer():
     def _connect(self):
         self._server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         self._server.ehlo()
-        self._server.login(environment.variables['GMAIL_USERNAME'],
-                           environment.variables['GMAIL_PASSWORD'])
+        self._server.login(environment.ENV_VARIABLES['GMAIL_USERNAME'],
+                           environment.ENV_VARIABLES['GMAIL_PASSWORD'])
 
     def _disconnect(self):
         self._server.quit()

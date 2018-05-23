@@ -15,7 +15,7 @@ from . import environment
 # available throughout the whole application after
 # this initial connection is complete. Staging and Production
 # use different MongoDB instances on Heroku.
-MONGODB_URI = environment.variables['MONGODB_URI']
+MONGODB_URI = environment.ENV_VARIABLES['MONGODB_URI']
 connect(host=MONGODB_URI)
 
 
