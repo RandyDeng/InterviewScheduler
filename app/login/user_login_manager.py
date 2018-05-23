@@ -1,5 +1,5 @@
 
-from app.utils.mongo import Applicant, UnverifiedUserId
+from app.utils.mongo import Applicant, UnverifiedUser
 
 
 def valid_applicant(id):
@@ -12,8 +12,8 @@ def valid_applicant(id):
 
 def first_login(id):
     try:
-        UnverifiedUserId.objects().get(user_id=id)
+        UnverifiedUser.objects().get(user_id=id)
         return True
-    except (UnverifiedUserId.DoesNotExist,
-            UnverifiedUserId.MultipleObjectsReturned):
+    except (UnverifiedUser.DoesNotExist,
+            UnverifiedUser.MultipleObjectsReturned):
         return False

@@ -25,7 +25,7 @@ def dashboard():
         'current_applications': mongo.Applicant.objects(
             semester=environment.current_semester()).count(),
         'total_applications': mongo.Applicant.objects.count(),
-        'all_unverified': mongo.UnverifiedUserId.objects.count(),
+        'all_unverified': mongo.UnverifiedUser.objects.count(),
     }
     kwargs.update(query.get_kwargs())
     return render_template('dashboard.html', **kwargs)
@@ -67,8 +67,8 @@ def applications_query(urlquery):
                                title=title,
                                color=color,
                                applicants=applicants)
-    elif mongo_object == 'UnverifiedUserId':
-        unverified_users = mongo.UnverifiedUserId.objects(__raw__=query)
+    elif mongo_object == 'UnverifiedUser':
+        unverified_users = mongo.UnverifiedUser.objects(__raw__=query)
         return render_template('applications_query_unverified_list.html',
                                title=title,
                                color=color,

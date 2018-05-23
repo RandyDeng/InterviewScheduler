@@ -73,7 +73,7 @@ def registration(id):
         abort(404)
 
     form = RegistrationForm()
-    unverified_id = mongo.UnverifiedUserId.objects().get(user_id=id)
+    unverified_id = mongo.UnverifiedUser.objects().get(user_id=id)
     if request.method == 'POST':
         if form.validate_on_submit():
             new_app = mongo.Applicant(
