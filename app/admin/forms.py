@@ -4,7 +4,9 @@ from flask_wtf import FlaskForm
 
 from wtforms import PasswordField, StringField, SubmitField
 
+from app.utils.environment import POSITIONS
 from app.login.admin_login_manager import verify_credentials
+from app.login.forms import MultiCheckboxField
 
 
 # Flask Forms: This section contains all of the forms used
@@ -42,6 +44,13 @@ class UpdatePasswordForm(FlaskForm):
             flash('Your new password does not match', 'alert alert-danger')
             return False
         return True
+
+
+class AvailablePositionsForm(FlaskForm):
+    available_positions = MultiCheckboxField(
+        "Check the positions you would like available:",
+        choices=[p for key, value in POSITIONS])
+    submit = SubmitField("Update Available Positions")
 
 
 class DeleteUnverifiedUsersForm(FlaskForm):

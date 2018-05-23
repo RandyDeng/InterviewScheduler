@@ -19,10 +19,10 @@ CSRF_ENABLED = True
 
 # Use a secure, unique and absolutely secret key for
 # signing the data.
-CSRF_SESSION_KEY = environment.variables['CSRF_SESSION_KEY']
+CSRF_SESSION_KEY = environment.ENV_VARIABLES['CSRF_SESSION_KEY']
 
 # Secret key for signing cookies
-SECRET_KEY = environment.variables['SECRET_KEY']
+SECRET_KEY = environment.ENV_VARIABLES['SECRET_KEY']
 
 # Limit upload size to 3 MB before throwing errors
 MAX_CONTENT_LENGTH = 3 * 1024 * 1024
