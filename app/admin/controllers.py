@@ -8,7 +8,8 @@ from werkzeug import generate_password_hash
 
 from app.utils import environment, mongo
 
-from .forms import DeleteUnverifiedUsersForm, UpdatePasswordForm
+from .forms import (AvailablePositionsForm, DeleteUnverifiedUsersForm,
+                    UpdatePasswordForm)
 from . import admin, query
 
 
