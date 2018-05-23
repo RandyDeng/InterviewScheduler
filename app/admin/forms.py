@@ -55,3 +55,7 @@ class AvailablePositionsForm(FlaskForm):
 
 class DeleteUnverifiedUsersForm(FlaskForm):
     submit = SubmitField("Delete All Unverified Applicants")
+
+
+class InterviewSchedulerForm(FlaskForm):
+    submit = SubmitField("Generate Schedule")
