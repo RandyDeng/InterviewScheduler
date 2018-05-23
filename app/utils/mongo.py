@@ -110,6 +110,13 @@ class Admins(Document):
     password = StringField()
 
 
+# This document holds a string array of the positions available.
+# This information is based off of the POSITIONS variable in environment.py.
+# There is only one document containing this information.
+class AvailablePositions(Document):
+    available_positions = ListField(StringField())
+
+
 # This generates an UnverifiedUser with a user_id based on the provided
 # information. Generate password hash is used to generate the user_id.
 def unverified_user_generator(**kwargs):
