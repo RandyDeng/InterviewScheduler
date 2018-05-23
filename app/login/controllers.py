@@ -38,8 +38,12 @@ def admin():
 @login.route('/user', methods=['GET', 'POST'])
 def user():
     form = UserForm()
-    choices = [(p, p) for p in mongo.AvailablePositions.objects.first()[
-                'available_positions']]
+    try:
+        choices = [(p, p) for p in mongo.AvailablePositions.objects.first()[
+                    'available_positions']]
+    except BaseException:
+        mongo.AvailablePositions(available_positions=[]).save()
+        choices = []
     if not choices:
         choices = [('No positions available', 'No positions available')]
     form.position.choices = choices
