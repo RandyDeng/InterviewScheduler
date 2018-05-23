@@ -35,17 +35,41 @@ def dashboard():
 @admin.route('/control_panel', methods=['GET', 'POST'])
 @login_required
 def control_panel():
+    position_form = AvailablePositionsForm()
     password_form = UpdatePasswordForm()
+    flash_message = None
     if request.method == 'POST':
-        if password_form.validate_on_submit():
-            admin = mongo.Admins.objects.get(
-                username=password_form.username.data)
-            admin.password = generate_password_hash(
-                password_form.new_password.data)
-            admin.save()
-            flash('Password has been updated successfully!',
-                  'alert alert-success')
-    return render_template('control_panel.html', password_form=password_form)
+        if position_form.position_submit.data:
+            flash_message = 'position'
+            if position_form.validate_on_submit():
+                p_list = mongo.AvailablePositions.objects().first()
+                p_list.available_positions = (
+                    position_form.available_positions.data)
+                p_list.save()
+                flash('Available positions has been updated successfully!',
+                      'alert alert-success')
+        if password_form.submit.data:
+            flash_message = 'password'
+            if password_form.validate_on_submit():
+                admin = mongo.Admins.objects.get(
+                    username=password_form.username.data)
+                admin.password = generate_password_hash(
+                    password_form.new_password.data)
+                admin.save()
+                flash('Password has been updated successfully!',
+                      'alert alert-success')
+    # Only one entry should exist in the AvailablePositions Document
+    try:
+        p_list = mongo.AvailablePositions.objects().first()[
+            'available_positions']
+    except BaseException:
+        mongo.AvailablePositions(available_positions=[]).save()
+        p_list = []
+    return render_template('control_panel.html',
+                           position_form=position_form,
+                           password_form=password_form,
+                           p_list=p_list,
+                           flash_message=flash_message)
 
 
 @admin.route('/applications', methods=['GET'])
