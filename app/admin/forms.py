@@ -48,14 +48,15 @@ class UpdatePasswordForm(FlaskForm):
 
 class AvailablePositionsForm(FlaskForm):
     available_positions = MultiCheckboxField(
-        "Check the positions you would like available:",
+        'Check the positions you would like available:',
         choices=[(value, value) for key, value in POSITIONS.items()])
-    position_submit = SubmitField("Update Available Positions")
+    position_submit = SubmitField('Update Available Positions')
 
 
 class DeleteUnverifiedUsersForm(FlaskForm):
-    submit = SubmitField("Delete All Unverified Applicants")
+    submit = SubmitField('Delete All Unverified Applicants')
 
 
 class InterviewSchedulerForm(FlaskForm):
-    submit = SubmitField("Generate Schedule")
+    dates = StringField()
+    submit = SubmitField('Generate Schedule')
