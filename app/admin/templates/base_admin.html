@@ -105,6 +105,16 @@
                                     {% endif %}
                                 {% endwith %}
                             {% endblock %}
+                            <!-- The reason flash2 is available is because jinja2 doesnt support multiple definitions of blocks in the same file. Flash2 is added as a temporary fix until a better solution is discovered. -->
+                            {% block flash2 %}
+                                {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                        {% for category, message in messages %}
+                                            <p class="{{ category }}"> {{ message }} </p>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endwith %}
+                            {% endblock %}
                         {% endblock %}
                         <footer class="footer">
                             <div class="container-fluid">
