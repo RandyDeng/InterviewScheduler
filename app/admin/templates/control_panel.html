@@ -7,10 +7,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" data-background-color="purple">
-                    <h4 class="title">Update Admin Password</h4>
-                    <p class="category">Keep the admin account secure!</p>
+                    <h4 class="title">Update Available Positions</h4>
+                    <p class="category">Keep track and update which positions applicants may apply for</p>
                 </div>
                 <div class="card-content">
+                    {% if flash_message == "position" %}
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             {% block flash %}
@@ -18,6 +19,53 @@
                             {% endblock %}
                         </div>
                     </div>
+                    {% endif %}
+                    <form method="POST" action="{{ url_for('admin.control_panel') }}">
+                        {{ position_form.hidden_tag() }}
+                        {{ position_form.available_positions }}
+                        {{ position_form.position_submit(class='btn btn-primary pull-right') }}
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-profile">
+                <div class="content">
+                    <h6 class="category text-gray">Currently Available Positions</h6>
+                    <div class="card-content">
+                        {% for item in p_list %}
+                        <p>{{ item }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="card card-profile">
+                <div class="content">
+                    <h6 class="category text-gray">Misc. Information</h6>
+                    <h4 class="card-title">What if I don't require some of these positions?</h4>
+                    <p class="card-content">That's fine. This is just a list of all possible positions. Only check the ones you need people to apply for.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" data-background-color="purple">
+                    <h4 class="title">Update Admin Password</h4>
+                    <p class="category">Keep the admin account secure!</p>
+                </div>
+                <div class="card-content">
+                    {% if flash_message == "password" %}
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            {% block flash2 %}
+                              {{ super() }}
+                            {% endblock %}
+                        </div>
+                    </div>
+                    {% endif %}
                     <form method="POST" action="{{ url_for('admin.control_panel') }}">
                         {{ password_form.hidden_tag() }}
                         <div class="row">
