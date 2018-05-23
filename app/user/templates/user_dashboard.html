@@ -6,7 +6,13 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header" data-background-color="purple">
+                {% if 'REJECTION' in applicant.status %}
+                    <div class="card-header" data-background-color="red">
+                {% elif 'ACCEPTANCE' in applicant.status %}
+                    <div class="card-header" data-background-color="green">
+                {% else %}
+                    <div class="card-header" data-background-color="orange">
+                {% endif %}
                     <h4 class="title">Your Profile</h4>
                     <p class="category">Basic information about you and your application!
                     </p>

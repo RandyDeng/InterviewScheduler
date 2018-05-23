@@ -83,15 +83,8 @@ def applications_query(urlquery):
 def applications_applicant(id):
     try:
         applicant = mongo.Applicant.objects().get(user_id=id)
-        if 'PENDING' in applicant.status:
-            color = 'orange'
-        elif 'REJECTION' in applicant.status:
-            color = 'red'
-        elif 'ACCEPTANCE' in applicant.status:
-            color = 'green'
         return render_template('applications_applicant.html',
-                               applicant=applicant,
-                               color=color)
+                               applicant=applicant)
     except (mongo.Applicant.DoesNotExist,
             mongo.Applicant.MultipleObjectsReturned):
         abort(500)
