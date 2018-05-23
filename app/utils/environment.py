@@ -24,8 +24,6 @@ variables = {
 # process.
 # Currently, only PI and the core officer positions are supported.
 positions = {
-    'MPI': 'Master Peer Instructor',
-    'PI': 'Peer Instructor',
     'President': 'President',
     'VP': 'Vice President',
     'DoF': 'Director of Finances',
@@ -35,7 +33,9 @@ positions = {
     'ADoF': 'Assistant Director of Finances',
     'ADoO': 'Assistant Director of Operations',
     'ADoC': 'Assistant Director of Communications',
-    'ADoN': 'Assistant Director of Networks'
+    'ADoN': 'Assistant Director of Networks',
+    'MPI': 'Master Peer Instructor',
+    'PI': 'Peer Instructor',
 }
 
 
