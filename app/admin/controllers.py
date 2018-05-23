@@ -2,15 +2,13 @@ import json
 import urllib
 
 from flask import (abort, make_response, redirect,
-                   flash, render_template, request)
+                   flash, render_template, request, session)
 from flask_login import login_required
 from werkzeug import generate_password_hash
 
 from app.utils import environment, mongo
 
-from .forms import (AvailablePositionsForm, DeleteUnverifiedUsersForm,
-                    UpdatePasswordForm)
-from . import admin, query
+from . import admin, forms, query
 
 
 @admin.route('/logout', methods=['GET'])
@@ -35,8 +33,8 @@ def dashboard():
 @admin.route('/control_panel', methods=['GET', 'POST'])
 @login_required
 def control_panel():
-    position_form = AvailablePositionsForm()
-    password_form = UpdatePasswordForm()
+    position_form = forms.AvailablePositionsForm()
+    password_form = forms.UpdatePasswordForm()
     flash_message = None
     if request.method == 'POST':
         if position_form.position_submit.data:
@@ -89,7 +87,7 @@ def applications_query(urlquery):
         return render_template(
             'applications_query_applicant_list.html', **urlquery)
     elif mongo_object == 'UnverifiedUser':
-        form = DeleteUnverifiedUsersForm()
+        form = forms.DeleteUnverifiedUsersForm()
         if request.method == 'POST':
             if form.validate_on_submit():
                 mongo.UnverifiedUser.objects.delete()
