@@ -3313,6 +3313,12 @@ select.form-control[multiple],
     transition: 0.3s ease;
 }
 
+.applications.applications-sm {
+    line-height: 3px;
+    padding: 15px 10px;
+    margin-bottom: 0em;
+}
+
 .applications,
 .applications.applications-default {
     background-color: white;
