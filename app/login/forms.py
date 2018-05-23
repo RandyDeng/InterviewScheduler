@@ -49,7 +49,7 @@ def check_gt_email(message, min=12, max=50):
 
 def check_position(message):
     def _check_position(form, field):
-        choices = [(p, p) for p in AvailablePositions.objects.first()[
+        choices = [p for p in AvailablePositions.objects.first()[
                     'available_positions']]
         if field.data not in choices:
             flash(message, 'alert alert-danger')
