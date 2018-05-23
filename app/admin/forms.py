@@ -49,7 +49,8 @@ class UpdatePasswordForm(FlaskForm):
 class AvailablePositionsForm(FlaskForm):
     available_positions = MultiCheckboxField(
         "Check the positions you would like available:",
-        choices=[p for key, value in POSITIONS])
+        choices=[
+            '{} ({})'.format(value, key) for key, value in POSITIONS.items()])
     submit = SubmitField("Update Available Positions")
 
 
