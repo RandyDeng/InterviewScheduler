@@ -15,14 +15,29 @@
                     <div class="card-content">
                         <div class="row">
                             <div class="col-md-12">
-                                <form method="POST" action="{{ url_for('admin.interview_scheduler') }}">
-
-                                </form>
-                                <a href=applications/{{ query_current_all }}>
-                                    <div class="applications applications-info">
-                                        <span>All Applicants</span>
+                                {% if step == 1 %}
+                                <form method="POST" action="{{ url_for('admin.interviewscheduler', step=step+1) }}">
+                                    <div class="form-group label-floating">
+                                        {{ form.dates.label(class='black_label') }}
+                                        {{ form.dates(class='form-control') }}
                                     </div>
-                                </a>
+                                    <div class="form-group label-floating">
+                                        {{ form.length.label(class='black_label') }}
+                                        {{ form.length()}}
+                                    </div>
+                                    <div class="form-group label-floating">
+                                        {{ form.submit(class='btn btn-primary pull-right') }}
+                                    </div>
+                                </form>
+                                {% elif step == 2 %}
+                                <form method="POST" action="{{ url_for('admin.interviewscheduler', step=step+1) }}">
+                                    {{ form.submit(class='btn btn-primary pull-right') }}
+                                </form>
+                                {% elif step == 3 %}
+                                <form method="POST" action="{{ url_for('admin.interviewscheduler', step=step+1) }}">
+                                    {{ form.submit(class='btn btn-primary pull-right') }}
+                                </form>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
