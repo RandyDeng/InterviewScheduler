@@ -2772,6 +2772,24 @@ output {
     font-weight: 400;
 }
 
+.form-group .black_label {
+    color: black;
+}
+
+.form-group select {
+  text-align: left;
+  width: 30%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-shadow: none;
+  background: transparent;
+}
+
+.form-group select:focus {
+  border: 1px solid #AC00AF;
+  color: #333333;
+}
+
 .form-control::-moz-placeholder,
 .form-group .form-control::-moz-placeholder {
     color: #AAAAAA;
@@ -5163,6 +5181,10 @@ footer .btn {
 
 .card .card-content {
     padding: 15px 20px;
+}
+
+.card .card-content label {
+    color: black;
 }
 
 .card .card-content .category {
