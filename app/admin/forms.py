@@ -63,5 +63,5 @@ class InterviewSchedulerForm(FlaskForm):
         render_kw={'placeholder': 'e.g.: 03/02/2018;03/04/2018'})
     length = SelectField(
         'Length of each time slot:',
-        choices=[(30, '30 minutes'), (60, '60 minutes')])
+        choices=[('30', '30 minutes'), ('60', '60 minutes')])
     submit = SubmitField('Add Availability')
