@@ -1,8 +1,8 @@
 import json
 import urllib
 
-from flask import (abort, make_response, redirect,
-                   flash, render_template, request, session)
+from flask import (abort, make_response, redirect, flash,
+                   render_template, request, session, url_for)
 from flask_login import login_required
 from werkzeug import generate_password_hash
 
@@ -169,18 +169,35 @@ def applications_decision(decision, id):
 @admin.route('/interview_scheduler/step/<int:step>', methods=['GET', 'POST'])
 @login_required
 def interviewscheduler(step=1):
+    kwargs = {'step': step}
     if step is 0:
         interview_scheduler.clean_session()
-        step += 1
+        kwargs['step'] = kwargs['step'] + 1
     elif step is 1:
         form = forms.InterviewSchedulerForm()
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                session[interview_scheduler.SESSION_METADATA] = json.dumps(
+                    {
+                        'dates': form.dates.data,
+                        'length': form.length.data
+                    }
+                )
+                return redirect(url_for('.interviewscheduler', step=2))
     elif step is 2:
+        # retrieve info from step 1 and store in kwargs
+        # throw error if not possible
         form = forms.InterviewSchedulerForm()
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                # save info in session
+                # check which button was pressed
+                return redirect(url_for('.interviewscheduler', step=3))
     elif step is 3:
         form = forms.InterviewSchedulerForm()
     return render_template('interview_scheduler.html',
-                           step=step,
-                           form=form)
+                           form=form,
+                           **kwargs)
 
 
 @admin.route('/history', methods=['GET'])
