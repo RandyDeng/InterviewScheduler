@@ -8,7 +8,7 @@ from werkzeug import generate_password_hash
 
 from app.utils import environment, mongo
 
-from . import admin, forms, query
+from . import admin, forms, interview_scheduler, query
 
 
 @admin.route('/logout', methods=['GET'])
@@ -166,9 +166,21 @@ def applications_decision(decision, id):
 
 
 @admin.route('/interview_scheduler', methods=['GET', 'POST'])
+@admin.route('/interview_scheduler/step/<int:step>', methods=['GET', 'POST'])
 @login_required
-def interview_scheduler():
-    return render_template('interview_scheduler.html')
+def interviewscheduler(step=1):
+    if step is 0:
+        interview_scheduler.clean_session()
+        step += 1
+    elif step is 1:
+        form = forms.InterviewSchedulerForm()
+    elif step is 2:
+        form = forms.InterviewSchedulerForm()
+    elif step is 3:
+        form = forms.InterviewSchedulerForm()
+    return render_template('interview_scheduler.html',
+                           step=step,
+                           form=form)
 
 
 @admin.route('/history', methods=['GET'])
