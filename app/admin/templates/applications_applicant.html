@@ -77,7 +77,13 @@
         </div>
         <div class="container-fluid">
             <div class="card">
-                <div class="card-header" data-background-color={{ color }}>
+                {% if 'REJECTION' in applicant.status %}
+                    <div class="card-header" data-background-color="red">
+                {% elif 'ACCEPTANCE' in applicant.status %}
+                    <div class="card-header" data-background-color="green">
+                {% else %}
+                    <div class="card-header" data-background-color="orange">
+                {% endif %}
                     <h4 class="title">Officer Specific Information: {{ applicant.first_name }} {{ applicant.last_name }}</h4>
                     <p class="category">This section contains information relevant to those applying for officer positions</p>
                 </div>
