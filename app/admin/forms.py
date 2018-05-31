@@ -54,6 +54,12 @@ class AvailablePositionsForm(FlaskForm):
     position_submit = SubmitField('Update Available Positions')
 
 
+class ApplicationDecisionsForm(FlaskForm):
+    accept = BooleanField('Accept')
+    reject = BooleanField('Reject')
+    submit = SubmitField('Submit Decision')
+
+
 class DeleteUnverifiedUsersForm(FlaskForm):
     submit = SubmitField('Delete All Unverified Applicants')
 
