@@ -60,7 +60,7 @@ class DeleteUnverifiedUsersForm(FlaskForm):
 class InterviewSchedulerForm(FlaskForm):
     dates = StringField(
         'Enter interview dates using MM/DD/YYYY format:',
-        render_kw={'placeholder': 'e.g.: 03/02/2018;03/04/2018'})
+        render_kw={'placeholder': 'e.g.: 03/02/2018; 03/04/2018'})
     length = SelectField(
         'Length of each time slot:',
         choices=[('30', '30 minutes'), ('60', '60 minutes')])
