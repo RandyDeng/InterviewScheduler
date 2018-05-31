@@ -16,17 +16,17 @@ from app.login.forms import MultiCheckboxField
 class UpdatePasswordForm(FlaskForm):
     username = StringField(
         'Current Username',
-        render_kw={"placeholder": "Current Username"})
+        render_kw={'placeholder': 'Current Username'})
     password = PasswordField(
         'Current Password',
-        render_kw={"placeholder": "Current Password"})
+        render_kw={'placeholder': 'Current Password'})
     new_password = PasswordField(
         'New Password',
-        render_kw={"placeholder": "New Password"})
+        render_kw={'placeholder': 'New Password'})
     new_password_copy = PasswordField(
         'Confirm New Password',
-        render_kw={"placeholder": "Confirm New Password"})
-    submit = SubmitField("Update Password")
+        render_kw={'placeholder': 'Confirm New Password'})
+    submit = SubmitField('Update Password')
 
     def validate(self):
         if (not self.username.data) or (not self.password.data):
