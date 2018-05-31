@@ -45,6 +45,29 @@ APPLICANT_STATUS = {
 }
 
 
+# Given applicant data and officer decision, this will return
+# the updated applicant status
+def next_status(applicant, accepted):
+    if applicant.status == APPLICANT_STATUS[0]:
+        if accepted:
+            return APPLICANT_STATUS[2]
+        else:
+            return APPLICANT_STATUS[1]
+    if applicant.status == APPLICANT_STATUS[2]:
+        if accepted and (applicant.position == environment.POSITIONS['PI']):
+            return APPLICANT_STATUS[6]
+        elif accepted:
+            return APPLICANT_STATUS[4]
+        else:
+            return APPLICANT_STATUS[3]
+    if applicant.status == APPLICANT_STATUS[4]:
+        if accepted:
+            return APPLICANT_STATUS[6]
+        else:
+            return APPLICANT_STATUS[5]
+    return applicant.status
+
+
 # The Applicant object contains all information regarding an Applicant.
 # All Applicants will have data in each field unless the field is
 # specific to a position. Some of the more basic data such as timestamps
