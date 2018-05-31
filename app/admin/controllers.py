@@ -101,16 +101,23 @@ def applications_query(urlquery):
                                **urlquery)
 
 
-@admin.route('/applications/applicant/<string:id>', methods=['GET'])
+@admin.route('/applications/applicant/<string:id>', methods=['GET', 'POST'])
 @login_required
 def applications_applicant(id):
     try:
         applicant = mongo.Applicant.objects().get(user_id=id)
-        return render_template('applications_applicant.html',
-                               applicant=applicant)
     except (mongo.Applicant.DoesNotExist,
             mongo.Applicant.MultipleObjectsReturned):
         abort(500)
+
+    form = forms.ApplicationDecisionsForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        new_status = mongo.next_status(applicant, form.accept.data)
+        applicant.status = new_status
+        applicant.save()
+    return render_template('applications_applicant.html',
+                           applicant=applicant,
+                           form=form)
 
 
 @admin.route('/applications/resume/<string:id>',
