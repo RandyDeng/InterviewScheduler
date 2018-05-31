@@ -101,5 +101,21 @@
                 </div>
             </div>
         </div>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header" data-background-color="red">
+                    <h4 class="title">Make a Decision</h4>
+                    <p class="category">Accept or reject candidates. Accepted candidates will continue on to the next stage. Please see the help page for details about status meanings.</p>
+                </div>
+                <div class="card-content">
+                    <form method="POST" action="{{ url_for('admin.applications_applicant', id=applicant.user_id) }}">
+                        {{ form.hidden_tag() }}
+                        {{ form.submit(class='btn btn-danger pull-right') }}
+                        {{ form.accept(class='pull-right') }} {{ form.accept.label(class='pull-right') }}
+                        {{ form.reject(class='pull-right') }} {{ form.reject.label(class='pull-right') }}
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
