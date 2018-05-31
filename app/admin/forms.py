@@ -2,7 +2,8 @@ from flask import flash
 
 from flask_wtf import FlaskForm
 
-from wtforms import PasswordField, SelectField, StringField, SubmitField
+from wtforms import (BooleanField, PasswordField, SelectField,
+                     StringField, SubmitField)
 
 from app.utils.environment import POSITIONS
 from app.login.admin_login_manager import verify_credentials
