@@ -2,8 +2,8 @@ from flask import flash
 
 from flask_wtf import FlaskForm
 
-from wtforms import (BooleanField, PasswordField, SelectField,
-                     StringField, SubmitField)
+from wtforms import (BooleanField, IntegerField, PasswordField,
+                     SelectField, StringField, SubmitField)
 
 from app.utils.environment import POSITIONS
 from app.login.admin_login_manager import verify_credentials
@@ -77,4 +77,9 @@ class InterviewSchedulerForm(FlaskForm):
     length = SelectField(
         'Length of each time slot:',
         choices=[('30', '30 minutes'), ('60', '60 minutes')])
+    committee_size = IntegerField(
+        'Enter number of officers required to be present for interview:')
+    match_position = BooleanField(
+        'Check this box if current holder of position '
+        'must be present for interview:')
     submit = SubmitField('Add Availability')

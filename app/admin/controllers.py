@@ -155,7 +155,9 @@ def interviewscheduler(step=1):
                 session[interview_scheduler.SESSION_METADATA] = json.dumps(
                     {
                         'dates': form.dates.data.replace(' ', ''),
-                        'length': form.length.data
+                        'length': form.length.data,
+                        'committee_size': form.committee_size.data,
+                        'match_position': form.match_position.data
                     }
                 )
                 return redirect(url_for('.interviewscheduler', step=2))
