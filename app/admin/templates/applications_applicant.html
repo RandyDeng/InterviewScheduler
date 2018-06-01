@@ -111,8 +111,16 @@
                     <form method="POST" action="{{ url_for('admin.applications_applicant', id=applicant.user_id) }}">
                         {{ form.hidden_tag() }}
                         {{ form.submit(class='btn btn-danger pull-right') }}
-                        {{ form.accept(class='pull-right') }} {{ form.accept.label(class='pull-right') }}
-                        {{ form.reject(class='pull-right') }} {{ form.reject.label(class='pull-right') }}
+                        <ul>
+                            <li>
+                                {{ form.accept(class='') }}
+                                {{ form.accept.label(class='') }}
+                            </li>
+                            <li>
+                                {{ form.reject(class='') }}
+                                {{ form.reject.label(class='') }}
+                            </li>
+                        </ul>
                     </form>
                 </div>
             </div>
