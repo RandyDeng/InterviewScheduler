@@ -113,8 +113,8 @@ def applications_applicant(id):
     form = forms.ApplicationDecisionsForm()
     if request.method == 'POST' and form.validate_on_submit():
         new_status = mongo.next_status(applicant, form.accept.data)
+        applicant.update(set__status=new_status)
         applicant.status = new_status
-        applicant.save()
         flash('Decision has been submitted', 'alert alert-success')
     return render_template('applications_applicant.html',
                            applicant=applicant,
