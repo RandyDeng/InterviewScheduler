@@ -59,6 +59,12 @@ class ApplicationDecisionsForm(FlaskForm):
     reject = BooleanField('Reject')
     submit = SubmitField('Submit Decision')
 
+    def validate(self):
+        if bool(self.accept.data) == bool(self.reject.data):
+            flash('You must make one decision')
+            return False
+        return True
+
 
 class DeleteUnverifiedUsersForm(FlaskForm):
     submit = SubmitField('Delete All Unverified Applicants')
