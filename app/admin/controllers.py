@@ -187,7 +187,7 @@ def interviewscheduler(step=1):
             if form.validate_on_submit():
                 session[interview_scheduler.SESSION_METADATA] = json.dumps(
                     {
-                        'dates': form.dates.data,
+                        'dates': form.dates.data.replace(' ', ''),
                         'length': form.length.data
                     }
                 )
