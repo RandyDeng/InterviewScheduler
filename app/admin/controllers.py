@@ -118,7 +118,8 @@ def applications_applicant(id):
         flash('Decision has been submitted', 'alert alert-success')
     return render_template('applications_applicant.html',
                            applicant=applicant,
-                           form=form)
+                           form=form,
+                           APPLICANT_STATUS=mongo.APPLICANT_STATUS)
 
 
 @admin.route('/applications/resume/<string:id>',
