@@ -22,17 +22,17 @@ connect(host=MONGODB_URI)
 # The following are 7 applicant states that determine
 # what stage the applicant is in. Below is a description
 # of what each stage means:
-# REVIEW_PENDING - Application has been received and is under review
-# REVIEW_REJECTION - Applicant has been rejected during the pre-screening phase
-# INTERVIEW_PENDING - Application has been deemed okay and the applicant will
+# Application Pending - Application has been received and is under review
+# Application Rejected - Applicant has been rejected during pre-screening
+# Interview Pending - Application has been deemed okay and the applicant will
 #                     now schedule an interview with the Elections Committee
-# INTERVIEW_REJECTION - Applicant has been rejected during the interview phase
-# CANDIDATE_PENDING - Applicant has passed the interview stage and will now be
+# Interview Rejected - Applicant has been rejected during the interview phase
+# Election Pending - Applicant has passed the interview stage and will now be
 #                     voted on by The Hive general body
-# CANDIDATE_REJECTION - Applicant did not receive the highest number of votes
+# Election Rejected - Applicant did not receive the highest number of votes
 #                       and is thereby rejected
-# ACCEPTANCE - Applicant has been accepted
-# **IMPORTANT NOTE** CANDIDATE_PENDING and CANDIDATE_REJECTION only apply to
+# Accepted - Applicant has been accepted
+# **IMPORTANT NOTE** Election Pending and Election Rejected only apply to
 #                    Officer Positions
 APPLICANT_STATUS = {
     0: 'Application Pending',
