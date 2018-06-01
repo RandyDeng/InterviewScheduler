@@ -61,7 +61,7 @@ class ApplicationDecisionsForm(FlaskForm):
 
     def validate(self):
         if bool(self.accept.data) == bool(self.reject.data):
-            flash('You must make one decision')
+            flash('You must make one decision', 'alert alert-danger')
             return False
         return True
 
