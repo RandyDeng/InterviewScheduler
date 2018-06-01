@@ -35,13 +35,13 @@ connect(host=MONGODB_URI)
 # **IMPORTANT NOTE** CANDIDATE_PENDING and CANDIDATE_REJECTION only apply to
 #                    Officer Positions
 APPLICANT_STATUS = {
-    0: 'REVIEW_PENDING',
-    1: 'REVIEW_REJECTION',
-    2: 'INTERVIEW_PENDING',
-    3: 'INTERVIEW_REJECTION',
-    4: 'CANDIDATE_PENDING',
-    5: 'CANDIDATE_REJECTION',
-    6: 'ACCEPTANCE'
+    0: 'Application Pending',
+    1: 'Application Rejected',
+    2: 'Interview Pending',
+    3: 'Interview Rejected',
+    4: 'Election Pending',
+    5: 'Election Rejected',
+    6: 'Accepted'
 }
 
 
