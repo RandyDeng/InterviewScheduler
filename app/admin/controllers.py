@@ -51,9 +51,8 @@ def control_panel():
             if password_form.validate_on_submit():
                 admin = mongo.Admins.objects.get(
                     username=password_form.username.data)
-                admin.password = generate_password_hash(
-                    password_form.new_password.data)
-                admin.save()
+                admin.update(set__password=generate_password_hash(
+                    password_form.new_password.data))
                 flash('Password has been updated successfully!',
                       'alert alert-success')
     # Only one entry should exist in the AvailablePositions Document
