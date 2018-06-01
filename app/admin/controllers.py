@@ -140,39 +140,6 @@ def applications_resume(id):
     return response
 
 
-@admin.route('/applications/decision/<string:decision>/<string:id>',
-             methods=['GET'])
-@login_required
-def applications_decision(decision, id):
-    try:
-        applicant = mongo.Applicant.objects().get(user_id=id)
-    except (mongo.Applicant.DoesNotExist,
-            mongo.Applicant.MultipleObjectsReturned):
-        abort(500)
-
-    if applicant.status == mongo.APPLICANT_STATUS[0]:
-        if decision == 'accept':
-            applicant.status == mongo.APPLICANT_STATUS[2]
-        elif decision == 'reject':
-            applicant.status == mongo.APPLICANT_STATUS[1]
-
-    elif applicant.status == mongo.APPLICANT_STATUS[2]:
-        if decision == 'accept':
-            if applicant.position == 'Peer Instructor':
-                applicant.status == mongo.APPLICANT_STATUS[6]
-            else:
-                applicant.status == mongo.APPLICANT_STATUS[4]
-        elif decision == 'reject':
-            applicant.status == mongo.APPLICANT_STATUS[3]
-
-    elif applicant.status == mongo.APPLICANT_STATUS[4]:
-        if decision == 'accept':
-            applicant.status == mongo.APPLICANT_STATUS[6]
-        elif decision == 'reject':
-            applicant.status == mongo.APPLICANT_STATUS[5]
-    return redirect('/admin/applications/applicant/' + id)
-
-
 @admin.route('/interview_scheduler', methods=['GET', 'POST'])
 @admin.route('/interview_scheduler/step/<int:step>', methods=['GET', 'POST'])
 @login_required
