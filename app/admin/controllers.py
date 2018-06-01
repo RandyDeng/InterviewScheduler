@@ -115,6 +115,7 @@ def applications_applicant(id):
         new_status = mongo.next_status(applicant, form.accept.data)
         applicant.status = new_status
         applicant.save()
+        flash('Decision has been submitted', 'alert alert-success')
     return render_template('applications_applicant.html',
                            applicant=applicant,
                            form=form)
