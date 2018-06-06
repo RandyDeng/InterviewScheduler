@@ -166,6 +166,10 @@ def interviewscheduler(step=1):
                 )
                 return redirect(url_for('.interviewscheduler', step=2))
     elif step is 2:
+        # TODO split the dates
+        # TODO generate multipart form with each of the dates
+        # TODO add another button to add another person which will redirect to step 2 again
+        # TODO associate a persons name and position
         # retrieve info from step 1 and store in kwargs
         # throw error if not possible
         form = forms.InterviewSchedulerForm()
