@@ -62,7 +62,8 @@ def user():
                 {
                     'first_name': form.first_name.data,
                     'application_link': application_link_generator(
-                        unverified_user.user_id)
+                        unverified_user.user_id),
+                    'position': form.position.data
                 }
             )
             flash('Registration sent!', 'alert alert-success')
