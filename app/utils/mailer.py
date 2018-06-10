@@ -1,3 +1,4 @@
+from flask import abort
 import smtplib
 import jinja2
 
@@ -7,6 +8,7 @@ from email.mime.text import MIMEText
 from . import environment
 
 
+MAX_RETRY = 3
 FROM_ADDR = "The Hive: Interview Scheduler"
 
 
@@ -32,9 +34,16 @@ class Emailer():
         msg['Subject'] = self._subject
         msg.attach(MIMEText(self._body, 'html'))
         text = msg.as_string()
-        self._connect()
-        self._server.sendmail(FROM_ADDR, self._to, text)
-        self._disconnect()
+        attempts = 0
+        while attempts < MAX_RETRY:
+            try:
+                self._connect()
+                self._server.sendmail(FROM_ADDR, self._to, text)
+                self._disconnect()
+                return
+            except BaseException:
+                attempts += 1
+        abort(500)
 
 
 EMAIL_TEMPLATES = {
